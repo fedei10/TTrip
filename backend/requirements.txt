@@ -1,0 +1,32 @@
+
+
+fastapi
+uvicorn
+
+
+pydantic
+sqlalchemy
+
+
+
+psycopg2-binary
+
+# For testing
+pytest
+
+
+
+dotenv
+
+
+
+#langchain dependencies
+langchain_groq
+langchain 
+langchain-openai
+langchain-mcp-adapters
+
+elasticsearch
+
+
+redis

@@ -1,2 +1,13 @@
 venv/
 .env
+backend/venv/
+__pycache__/
+*.pyc
+*.log
+docker-compose.override.yml
+node_modules/
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+

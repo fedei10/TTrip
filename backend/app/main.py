@@ -15,4 +15,3 @@ def test_connections():
         "redis" : test_redis_connection(),
         "postgres" : test_postgres_connection()
     }
-
