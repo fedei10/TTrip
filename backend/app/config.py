@@ -19,6 +19,8 @@ class Settings:
  AMADEUS_API_SECRET = os.getenv("AMADEUS_API_SECRET")
  #gemini api
  GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+ #policy agent prompt template path
+ POLICY_AGENT_PROMPTEMPLATE_PATH = os.getenv("POLICY_AGENT_PROMPTEMPLATE_PATH")
 
 
 
