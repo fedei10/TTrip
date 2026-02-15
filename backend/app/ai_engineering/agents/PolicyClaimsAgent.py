@@ -1,12 +1,11 @@
-import os
 import yaml
-from langchain.chat_models import init_chat_model
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, AIMessage, ToolMessage
 from langchain.agents import create_agent
 from langchain.agents.middleware import wrap_tool_call
-from langchain_community.agent_toolkits.load_tools import load_tools
 from app.config import Settings
+from app.ai_engineering.tools.search_tool import load_search_tools
+from app.ai_engineering.tools.amadeus_tool import loadAmadeusToolkit
 
 # -----------------------------
 # 1️⃣ Load Prompt Template
@@ -70,29 +69,10 @@ llm = initialize_llm()
 # -----------------------------
 # 3️⃣ Load SearxNG Search Tools
 # -----------------------------
-def load_search_tools():
-    """Load and validate search tools."""
-    try:
-        tools = load_tools(
-            ["searx-search"],
-            searx_host="http://localhost:8888",
-            engines=["google", "bing", "duckduckgo"]
-            
-        )
-        
-        if not tools:
-            print("⚠️  Warning: No tools loaded. Agent will run without search capability.")
-            return []
-        
-        print(f"✅ Loaded {len(tools)} SearxNG search tool(s)")
-        return tools
-
-    except Exception as e:
-        print(f"⚠️  Warning: Error loading SearxNG tools: {e}")
-        print("Agent will continue without search tools.")
-        return []
-
-tools = load_search_tools()
+tools = [
+    *load_search_tools(),
+    *loadAmadeusToolkit(llm),
+]
 
 # -----------------------------
 # 4️⃣ Initialize Agent with Error Handling Middleware
