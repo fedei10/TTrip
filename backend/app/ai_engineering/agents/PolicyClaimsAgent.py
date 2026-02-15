@@ -67,8 +67,8 @@ def initialize_llm():
 llm = initialize_llm()
 
 # -----------------------------
-# 3️⃣ Load SearxNG Search Tools
-# -----------------------------
+# 3️⃣ Load Tools
+# ---------------------
 tools = [
     *load_search_tools(),
     *loadAmadeusToolkit(llm),
